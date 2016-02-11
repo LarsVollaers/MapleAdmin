@@ -20,8 +20,8 @@
 			$ff = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = -1"); // equiped
 			$gg = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 1"); // equip
 			$hh = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 2"); // use
-			$ii = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 3"); // etc
-			$jj = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 4"); // setup
+			$ii = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 3"); // setup
+			$jj = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 4"); // etc
 			$kk = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 5"); // cash
 			echo'<div class="col-xs-12"><a href="?ma=main" class="btn btn-warning">Back</a><hr/></div>';
 			echo'<div class="col-xs-12 col-sm-9"><h2>'.$c['name'].''.$comma.'s Inventory</h2><hr/>
@@ -56,7 +56,7 @@
 				</div>';
 			}
 			echo'
-			</div><div class="col-xs-12 col-md-12 col-lg-4"><h3>Etc:</h3><hr/>'; // etc
+			</div><div class="col-xs-12 col-md-12 col-lg-4"><h3>Setup:</h3><hr/>'; // setup
 			while($i = $ii->fetch_assoc()) {
 			echo'<div class="image_box"> 
 					<img src="/MapleAdmin/config/img/items/'.$i['itemid'].'.png" alt="img" title="'.$i['itemid'].'" />
@@ -66,7 +66,7 @@
 				</div>';
 			}
 			echo'
-			</div><div class="col-xs-12 col-md-12 col-lg-4"><h3>Setup:</h3><hr/>'; // setup
+			</div><div class="col-xs-12 col-md-12 col-lg-4"><h3>Etc:</h3><hr/>'; // etc
 			while($j = $jj->fetch_assoc()) {
 			echo'<div class="image_box"> 
 					<img src="/MapleAdmin/config/img/items/'.$j['itemid'].'.png" alt="img" title="'.$j['itemid'].'" />

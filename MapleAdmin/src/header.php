@@ -13,6 +13,9 @@ if(basename($_SERVER["PHP_SELF"]) == "header.php"){
 	<link rel="stylesheet" href="config/css/bootstrap.css">
 	<link rel="stylesheet" href="config/css/style.css">
 	<link rel="stylesheet" href="config/css/bootstrap.min.css">
+	<script type="text/javascript" src="config/js/jquery.min.js"></script>
+	<script type="text/javascript" src="config/js/bootstrap.min.js"></script>
+	
 </head>
 	<body>
 		<div class="col-xs-12"><div class="logo_box"><div class="version_fix"><b><?php echo''.$siteversion.'';?></b></div></div> <hr/></div>

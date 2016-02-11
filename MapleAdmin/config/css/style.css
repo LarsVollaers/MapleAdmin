@@ -67,6 +67,7 @@ h1,h2,h3,h4 {
 	position: relative;
 	top: 27px;
 	left: 300px;
+	width: 24px;
 	color: #BA0000;
 	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }

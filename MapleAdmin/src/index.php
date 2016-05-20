@@ -20,89 +20,146 @@
 			$ff = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = -1"); // equiped
 			$gg = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 1"); // equip
 			$hh = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 2"); // use
-			$ii = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 3"); // setup
-			$jj = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 4"); // etc
+			$ii = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 3"); // etc
+			$jj = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 4"); // setup
 			$kk = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 5"); // cash
-			echo'<div class="col-xs-12"><a href="?ma=main" class="btn btn-warning">Back</a><hr/></div>';
-			echo'<div class="col-xs-12 col-sm-9"><h2>'.$c['name'].''.$comma.'s Inventory</h2><hr/>
+			
+			echo'
+				<div class="row">
 				
-			<div class="col-xs-12 col-md-12 col-lg-4"><h3>'.$c['name'].' is wearing:</h3><hr/>'; // equiped
-			while($f = $ff->fetch_assoc()) {
-			echo'<div class="image_box"> 
-					<img src="/MapleAdmin/config/img/items/'.$f['itemid'].'.png" alt="img" title="'.$f['itemid'].'" />
-				</div> 
-				<div class="image_box2"> 
-					<p class="counter_fix">'.$f['quantity'].'</p>
-				</div>';
-			}
-			echo'
-			</div><div class="col-xs-12 col-md-12 col-lg-4"><h3>Equips:</h3><hr/>'; // equip
-			while($g = $gg->fetch_assoc()) {
-			echo'<div class="image_box"> 
-					<img src="/MapleAdmin/config/img/items/'.$g['itemid'].'.png" alt="img" title="'.$g['itemid'].'" />
-				</div> 
-				<div class="image_box2"> 
-					<p class="counter_fix">'.$g['quantity'].'</p>
-				</div>';
-			}
-			echo'
-			</div><div class="col-xs-12 col-md-12 col-lg-4"><h3>Use:</h3><hr/>'; // use
-			while($h = $hh->fetch_assoc()) {
-			echo'<div class="image_box"> 
-					<img src="/MapleAdmin/config/img/items/'.$h['itemid'].'.png" alt="img" title="'.$h['itemid'].'" />
-				</div> 
-				<div class="image_box2"> 
-					<p class="counter_fix">'.$h['quantity'].'</p>
-				</div>';
-			}
-			echo'
-			</div><div class="col-xs-12 col-md-12 col-lg-4"><h3>Setup:</h3><hr/>'; // setup
-			while($i = $ii->fetch_assoc()) {
-			echo'<div class="image_box"> 
-					<img src="/MapleAdmin/config/img/items/'.$i['itemid'].'.png" alt="img" title="'.$i['itemid'].'" />
-				</div> 
-				<div class="image_box2"> 
-					<p class="counter_fix">'.$i['quantity'].'</p>
-				</div>';
-			}
-			echo'
-			</div><div class="col-xs-12 col-md-12 col-lg-4"><h3>Etc:</h3><hr/>'; // etc
-			while($j = $jj->fetch_assoc()) {
-			echo'<div class="image_box"> 
-					<img src="/MapleAdmin/config/img/items/'.$j['itemid'].'.png" alt="img" title="'.$j['itemid'].'" />
-				</div> 
-				<div class="image_box2"> 
-					<p class="counter_fix">'.$j['quantity'].'</p>
-				</div>';
-			}
-			echo'
-			</div><div class="col-xs-12 col-md-12 col-lg-4"><h3>Cash:</h3><hr/>'; // cash
-			while($k = $kk->fetch_assoc()) {
-			echo'<div class="image_box"> 
-					<img src="/MapleAdmin/config/img/items/'.$k['itemid'].'.png" alt="img" title="'.$k['itemid'].'" />
-				</div> 
-				<div class="image_box2"> 
-					<p class="counter_fix">'.$k['quantity'].'</p>
-				</div>';
-			}
-			/*
-			while($b = $bb->fetch_assoc()) {
-			echo'<div class="image_box"> 
-					<img src="/MapleAdmin/config/img/items/'.$b['itemid'].'.png" alt="img" />
-				</div> 
-				<div class="image_box2"> 
-					<p class="counter_fix">'.$b['quantity'].'</p>
-				</div>';
-			}
-			*/
-			echo'
-			</div></div>
-			
-			
-			<div class="col-xs-12 col-sm-3"><h2>'.$c['name'].''.$comma.'s Character info</h2><hr/>
-				<div class="col-xs-12">
+					<div class="col-xs-12 col-lg-2">
+						<div class="well well-sm">
+						<h3>Menu</h3><hr/>
+							<ul class="nav nav-pills nav-stacked">
+							  <li class="active"><a href="#Wearing" data-toggle="tab">Wearing</a></li>
+							  <li><a href="#Equip" data-toggle="tab">Equip</a></li>
+							  <li><a href="#Use" data-toggle="tab">Use</a></li>
+							  <li><a href="#Setup" data-toggle="tab">Setup</a></li>
+							  <li><a href="#Etc" data-toggle="tab">Etc</a></li>
+							  <li><a href="#Cash" data-toggle="tab">Cash</a></li>
+							</ul>
+							<hr/>
+						<a href="?ma=main" class="btn btn-warning btn-lg btn-block">Go back</a>
+						</div>
+					</div>
+					
+					<div class="col-xs-12 col-lg-6">
+						<div class="well well-sm">
+							<div id="myTabContent" class="tab-content">
+							  
+							  <div class="tab-pane fade active in" id="Wearing">
+								<h3>'.$c['name'].' is wearing:</h3><hr/>
+									<img src="/MapleAdmin/config/img/inventory_bg.png"/>
+									<span class="item_grid">
+										'; // Wearing
+										while($f = $ff->fetch_assoc()) {
+										echo'<div class="image_box"> 
+												<img src="/MapleAdmin/config/img/items/'.$f['itemid'].'.png" alt="img" title="'.$f['itemid'].'" />
+											</div> 
+											<div class="image_box2"> 
+												<p class="counter_fix">'.$f['quantity'].'</p>
+											</div>';
+										}
+										echo'
+								  </span>
+							  </div>
+							  
+							  <div class="tab-pane fade" id="Equip">
+								<h3>Equips:</h3><hr/>
+									<img src="/MapleAdmin/config/img/inventory_bg.png"/>
+									<span class="item_grid">
+										'; // Equip
+										while($g = $gg->fetch_assoc()) {
+										echo'<div class="image_box"> 
+												<img src="/MapleAdmin/config/img/items/'.$g['itemid'].'.png" alt="img" title="'.$g['itemid'].'" />
+											</div> 
+											<div class="image_box2"> 
+												<p class="counter_fix">'.$g['quantity'].'</p>
+											</div>';
+										}
+										echo'
+								  </span>
+							  </div>
+							  
+							  <div class="tab-pane fade" id="Use">
+								<h3>Use:</h3><hr/>
+									<img src="/MapleAdmin/config/img/inventory_bg.png"/>
+									<span class="item_grid">
+										'; // Use
+										while($h = $hh->fetch_assoc()) {
+										echo'<div class="image_box"> 
+												<img src="/MapleAdmin/config/img/items/'.$h['itemid'].'.png" alt="img" title="'.$h['itemid'].'" />
+											</div> 
+											<div class="image_box2"> 
+												<p class="counter_fix">'.$h['quantity'].'</p>
+											</div>';
+										}
+										echo'
+								  </span>
+							  </div>
+							  
+							  <div class="tab-pane fade" id="Setup">
+								<h3>Setup:</h3><hr/>
+									<img src="/MapleAdmin/config/img/inventory_bg.png"/>
+									<span class="item_grid">
+										'; // Setup
+										while($i = $ii->fetch_assoc()) {
+										echo'<div class="image_box"> 
+												<img src="/MapleAdmin/config/img/items/'.$i['itemid'].'.png" alt="img" title="'.$i['itemid'].'" />
+											</div> 
+											<div class="image_box2"> 
+												<p class="counter_fix">'.$i['quantity'].'</p>
+											</div>';
+										}
+										echo'
+								  </span>
+							  </div>
+							  
+							  <div class="tab-pane fade" id="Etc">
+								<h3>Etc:</h3><hr/>
+									<img src="/MapleAdmin/config/img/inventory_bg.png"/>
+									<span class="item_grid">
+										'; // Etc
+										while($j = $jj->fetch_assoc()) {
+										echo'<div class="image_box"> 
+												<img src="/MapleAdmin/config/img/items/'.$j['itemid'].'.png" alt="img" title="'.$j['itemid'].'" />
+											</div> 
+											<div class="image_box2"> 
+												<p class="counter_fix">'.$j['quantity'].'</p>
+											</div>';
+										}
+										echo'
+								  </span>
+							  </div>
+							  
+							  <div class="tab-pane fade" id="Cash">
+								<h3>Cash:</h3><hr/>
+									<img src="/MapleAdmin/config/img/inventory_bg.png"/>
+									<span class="item_grid">
+										'; // Cash
+										while($k = $kk->fetch_assoc()) {
+										echo'<div class="image_box"> 
+												<img src="/MapleAdmin/config/img/items/'.$k['itemid'].'.png" alt="img" title="'.$k['itemid'].'" />
+											</div> 
+											<div class="image_box2"> 
+												<p class="counter_fix">'.$k['quantity'].'</p>
+											</div>';
+										}
+										echo'
+								  </span>
+							  </div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-xs-12 col-lg-4">
+						<div class="well well-sm">
+
+						<h3>'.$c['name'].''.$comma.'s Character info</h3><hr/>
+
 					<div class="panel panel-default">
 					<span class="label label-default">Character ID: <b>'.$c['id'].'</b></span> <span class="label label-default">Account ID: <b>'.$e['id'].'</b></span>
+					<button style="float:right;" type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Edit</button>
 					  <div class="panel-body">
 						<img src="/'.$sitefolder.'/assets/img/GD/Characters/'.$c['name'].'.png" name="Character_img" alt="#" />
 					  </div>
@@ -137,9 +194,343 @@
 						<span class="label label-info">MaplePoints: <b>'.$e['mPoints'].'</b></span>
 					  </div>
 					</div>
+						
+						</div>
+					</div>
 					
 				</div>
-			</div>';
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit '.$c['name'].'</h4>
+      </div>
+      <div class="modal-body">
+
+	  
+			<form method="post" action="?ma=main&action=edit">
+				<div class="form-group">
+					<label class="control-label" for="focusedInput">Character name (cannot be changed)</label>
+					<input name="name" class="form-control" id="focusedInput" type="text" value="'.$c['name'].'" placeholder="Name">
+				</div>
+				
+				
+				<div class="row">
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">Character Level</label>
+						<input name="level" class="form-control" id="focusedInput" type="text" value="'.$c['level'].'" placeholder="Level">
+					</div>
+					
+					<div class="col-xs-12 col-sm-6" class="form-group">
+						<label class="control-label" for="focusedInput">Character job</label>
+						
+						        <select name="job" class="form-control" id="select">
+								  <option value="'.$c['job'].'">'.$jobs[$c['job']].' (current job)</option>
+								  
+									<option value="0">Beginner</option>
+									<option value="100">Warrior</option>
+									<option value="110">Fighter</option>
+									<option value="120">Page</option>
+									<option value="130">Spearman</option>
+									<option value="111">Crusader</option>
+									<option value="121">White Knight</option>
+									<option value="131">Dragon Knight</option>
+									<option value="112">Hero</option>
+									<option value="122">Paladin</option>
+									<option value="132">Dark Knight</option>
+									<option value="200">Magician</option>
+									<option value="210">Fire/Poison Wizard</option>
+									<option value="220">Ice/Lightning Wizard</option>
+									<option value="230">Cleric</option>
+									<option value="211">Fire/Poison Mage</option>
+									<option value="221">Ice/Lightning Mage</option>
+									<option value="231">Priest</option>
+									<option value="212">Fire/Poison Arch Mage</option>
+									<option value="222">Ice/Lightning Arch Mage</option>
+									<option value="232">Bishop</option>
+									<option value="300">Bowman</option>
+									<option value="310">Hunter</option>
+									<option value="320">Crossbowman</option>
+									<option value="311">Ranger</option>
+									<option value="321">Sniper</option>
+									<option value="312">Bow Master</option>
+									<option value="322">Crossbow Master</option>
+									<option value="400">Thief</option>
+									<option value="410">Assassin</option>
+									<option value="420">Bandit</option>
+									<option value="411">Hermit</option>
+									<option value="421">Chief Bandit</option>
+									<option value="412">Night Lord</option>
+									<option value="422">Shadower</option>
+									<option value="430">Blade Recruit</option>
+									<option value="431">Blade Acolyte</option>
+									<option value="432">Blade Specialist</option>
+									<option value="433">Blade Lord</option>
+									<option value="434">Blade Master</option>
+									<option value="500">Pirate</option>
+									<option value="510">Brawler</option>
+									<option value="520">Gunslinger</option>
+									<option value="511">Marauder</option>
+									<option value="521">Outlaw</option>
+									<option value="512">Buccaneer</option>
+									<option value="522">Corsair</option>
+									<option value="501">Cannon Master 1</option>
+									<option value="530">Cannon Master 2</option>
+									<option value="531">Cannon Master 3</option>
+									<option value="532">Cannon Master 4</option>
+									<option value="508">Jett</option>
+									<option value="570">Jett</option>
+									<option value="571">Jett</option>
+									<option value="572">Jett</option>
+									<option value="800">Manager</option>
+									<option value="900">GameMaster</option>
+									<option value="910">Super GM</option>
+									<option value="1000">Noblesse</option>
+									<option value="1100">Dawn Warrior 1</option>
+									<option value="1110">Dawn Warrior 2</option>
+									<option value="1111">Dawn Warrior 3</option>
+									<option value="1112">Dawn Warrior 4</option>
+									<option value="1200">Blaze Wizard 1</option>
+									<option value="1210">Blaze Wizard 2</option>
+									<option value="1211">Blaze Wizard 3</option>
+									<option value="1212">Blaze Wizard 4</option>
+									<option value="1300">Wind Archer 1</option>
+									<option value="1310">Wind Archer 2</option>
+									<option value="1311">Wind Archer 3</option>
+									<option value="1312">Wind Archer 4</option>
+									<option value="1400">Night Walker 1</option>
+									<option value="1410">Night Walker 2</option>
+									<option value="1411">Night Walker 3</option>
+									<option value="1412">Night Walker 4</option>
+									<option value="1500">Thunder Breaker 1</option>
+									<option value="1510">Thunder Breaker 2</option>
+									<option value="1511">Thunder Breaker 3</option>
+									<option value="1512">Thunder Breaker 4</option>
+									<option value="2000">Legend</option>
+									<option value="2001">Evan</option>
+									<option value="2100">Aran 1</option>
+									<option value="2110">Aran 2</option>
+									<option value="2111">Aran 3</option>
+									<option value="2112">Aran 4</option>
+									<option value="2200">Evan 1</option>
+									<option value="2210">Evan 2</option>
+									<option value="2211">Evan 3</option>
+									<option value="2212">Evan 4</option>
+									<option value="2213">Evan 5</option>
+									<option value="2214">Evan 6</option>
+									<option value="2215">Evan 7</option>
+									<option value="2216">Evan 8</option>
+									<option value="2217">Evan 9</option>
+									<option value="2218">Evan 10</option>
+									<option value="2300">Mercedes 1</option>
+									<option value="2310">Mercedes 2</option>
+									<option value="2311">Mercedes 3</option>
+									<option value="2312">Mercedes 4</option>
+									<option value="2003">Phantom</option>
+									<option value="2400">Phantom 1</option>
+									<option value="2410">Phantom 2</option>
+									<option value="2411">Phantom 3</option>
+									<option value="2412">Phantom 4</option>
+									<option value="3000">Citizen</option>
+									<option value="3100">Demon Slayer 1</option>
+									<option value="3110">Demon Slayer 2</option>
+									<option value="3111">Demon Slayer 3</option>
+									<option value="3112">Demon Slayer 4</option>
+									<option value="3200">Battle Mage 1</option>
+									<option value="3210">Battle Mage 2</option>
+									<option value="3211">Battle Mage 3</option>
+									<option value="3212">Battle Mage 4</option>
+									<option value="3300">Wild Hunter 1</option>
+									<option value="3310">Wild Hunter 2</option>
+									<option value="3311">Wild Hunter 3</option>
+									<option value="3312">Wild Hunter 4</option>
+									<option value="3500">Mechanic 1</option>
+									<option value="3510">Mechanic 2</option>
+									<option value="3511">Mechanic 3</option>
+									<option value="3512">Mechanic 4</option>
+									<option value="2004">Luminous</option>
+									<option value="2700">Luminous 1</option>
+									<option value="2710">Luminous 2</option>
+									<option value="2711">Luminous 3</option>
+									<option value="2712">Luminous 4</option>
+									<option value="3101">Demon Avenger 1</option>
+									<option value="3120">Demon Avenger 2</option>
+									<option value="3121">Demon Avenger 3</option>
+									<option value="3122">Demon Avenger 4</option>
+									<option value="3002">Xenon</option>
+									<option value="3600">Xenon 1</option>
+									<option value="3610">Xenon 2</option>
+									<option value="3611">Xenon 3</option>
+									<option value="3612">Xenon 4</option>
+									<option value="4001">Hayato 1</option>
+									<option value="4110">Hayato 2</option>
+									<option value="4111">Hayato 3</option>
+									<option value="4112">Hayato 4</option>
+									<option value="4002">Kanna 1</option>
+									<option value="4210">Kanna 2</option>
+									<option value="4211">Kanna 3</option>
+									<option value="4212">Kanna 4</option>
+									<option value="6000">Kaiser</option>
+									<option value="6100">Kaiser 1</option>
+									<option value="6110">Kaiser 2</option>
+									<option value="6111">Kaiser 3</option>
+									<option value="6112">Kaiser 4</option>
+									<option value="6001">Angelic Buster</option>
+									<option value="6500">Angelic Buster 1</option>
+									<option value="6510">Angelic Buster 2</option>
+									<option value="6511">Angelic Buster 3</option>
+									<option value="6512">Angelic Buster 4</option>
+									<option value="5100">Mihile 1</option>
+									<option value="5110">Mihile 2</option>
+									<option value="5111">Mihile 3</option>
+									<option value="5112">Mihile 4</option>
+
+								</select>
+
+					</div>
+					
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">GMlevel</label>
+						<input name="gm" class="form-control" id="focusedInput" type="text" value="'.$c['gm'].'" placeholder="gm (MAX = 7)">
+					</div>
+					
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">Str</label>
+						<input name="str" class="form-control" id="focusedInput" type="text" value="'.$c['str'].'" placeholder="str (MAX = 32767)">
+					</div>
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">Dex</label>
+						<input name="dex" class="form-control" id="focusedInput" type="text" value="'.$c['dex'].'" placeholder="dex (MAX = 32767)">
+					</div>				
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">Int</label>
+						<input name="int" class="form-control" id="focusedInput" type="text" value="'.$c['int'].'" placeholder="int (MAX = 32767)">
+					</div>				
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">Luk</label>
+						<input name="luk" class="form-control" id="focusedInput" type="text" value="'.$c['luk'].'" placeholder="luk (MAX = 32767)">
+					</div>
+				
+					<div class="col-xs-12 col-sm-6" class="form-group">
+						<label class="control-label" for="focusedInput">Hp</label>
+						<input name="hp" class="form-control" id="focusedInput" type="text" value="'.$c['hp'].'" placeholder="hp (MAX = 500000)">
+					</div>
+					<div class="col-xs-12 col-sm-6" class="form-group">
+						<label class="control-label" for="focusedInput">Max Hp</label>
+						<input name="maxhp" class="form-control" id="focusedInput" type="text" value="'.$c['maxhp'].'" placeholder="maxhp (MAX = 500000)">
+					</div>
+					
+					<div class="col-xs-12 col-sm-6" class="form-group">
+						<label class="control-label" for="focusedInput">Mp</label>
+						<input name="mp" class="form-control" id="focusedInput" type="text" value="'.$c['mp'].'" placeholder="mp (MAX = 500000)">
+					</div>
+					<div class="col-xs-12 col-sm-6" class="form-group">
+						<label class="control-label" for="focusedInput">Max Mp</label>
+						<input name="maxmp" class="form-control" id="focusedInput" type="text" value="'.$c['maxmp'].'" placeholder="maxmp (MAX = 500000)">
+					</div>
+				
+				
+					<div  class="col-xs-12 col-sm-6"class="form-group">
+						<label class="control-label" for="focusedInput">Character exp</label>
+						<input name="exp" class="form-control" id="focusedInput" type="text" value="'.$c['exp'].'" placeholder="exp">
+					</div>
+					
+					<div class="col-xs-12 col-sm-6" class="form-group">
+						<label class="control-label" for="focusedInput">Character meso</label>
+						<input name="meso" class="form-control" id="focusedInput" type="text" value="'.$c['meso'].'" placeholder="meso (MAX=2000000000)">
+					</div>
+					
+
+					&nbsp;<hr/>
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">Vote points</label>
+						<input name="vpoints" class="form-control" id="focusedInput" type="text" value="'.$e['vpoints'].'" placeholder="vpoints">
+					</div>
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">Donate points</label>
+						<input name="points" class="form-control" id="focusedInput" type="text" value="'.$e['points'].'" placeholder="points">
+					</div>
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">NX</label>
+						<input name="nxCredit" class="form-control" id="focusedInput" type="text" value="'.$e['nxCredit'].'" placeholder="nxCredit">
+					</div>
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">Cash</label>
+						<input name="ACash" class="form-control" id="focusedInput" type="text" value="'.$e['ACash'].'" placeholder="ACash">
+					</div>
+					<div class="col-xs-12 col-sm-3" class="form-group">
+						<label class="control-label" for="focusedInput">MaplePoints</label>
+						<input name="mPoints" class="form-control" id="focusedInput" type="text" value="'.$e['mPoints'].'" placeholder="mPoints">
+					</div>
+					
+					
+				</div>
+		
+		
+      </div>
+      <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<input type="submit" name="update" onclick="myFunction()" class="btn btn-primary" value="Save changes" />	
+			</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+			';
+
+			if(!isset($_POST['update'])){
+			echo'';
+			} else {
+				//character info
+				$name = $mysqli->real_escape_string($_POST['name']);
+				$level = $mysqli->real_escape_string($_POST['level']);
+				$job = $mysqli->real_escape_string($_POST['job']);
+				$gm = $mysqli->real_escape_string($_POST['gm']);
+				
+				$str = $mysqli->real_escape_string($_POST['str']);
+				$dex = $mysqli->real_escape_string($_POST['dex']);
+				$int = $mysqli->real_escape_string($_POST['int']);
+				$luk = $mysqli->real_escape_string($_POST['luk']);
+
+				$hp = $mysqli->real_escape_string($_POST['hp']);
+				$maxhp = $mysqli->real_escape_string($_POST['maxhp']);
+				$mp = $mysqli->real_escape_string($_POST['mp']);
+				$maxmp = $mysqli->real_escape_string($_POST['maxmp']);
+				
+				$exp = $mysqli->real_escape_string($_POST['exp']);
+				$meso = $mysqli->real_escape_string($_POST['meso']);
+				//account info
+				$vpoints = $mysqli->real_escape_string($_POST['vpoints']);
+				$points = $mysqli->real_escape_string($_POST['points']);
+				
+				$nxCredit = $mysqli->real_escape_string($_POST['nxCredit']);
+				$ACash = $mysqli->real_escape_string($_POST['ACash']);
+				$mPoints = $mysqli->real_escape_string($_POST['mPoints']);
+				
+				
+				if($name == ""){
+					echo '<div class=\"alert alert-danger\">Enter a name!</div><hr/><a href="#" class="btn btn-primary">Back</a> ';
+				}else{
+					$u = $mysqli->query("UPDATE characters SET name='".$name."', level = '".$level."', job = '".$job."', gm = '".$gm."', str = '".$str."', dex = '".$dex."', luk = '".$luk."', hp = '".$hp."', maxhp = '".$maxhp."', mp = '".$mp."', maxmp = '".$maxmp."', exp = '".$exp."', meso = '".$meso."' WHERE id='".$c['id']."'") or die();
+					$uu = $mysqli->query("UPDATE accounts SET vpoints='".$vpoints."', points = '".$points."', nxCredit = '".$nxCredit."', ACash = '".$ACash."', mPoints = '".$mPoints."' WHERE id='".$e['id']."'") or die();
+					echo '
+					
+					<div class="col-xs-12">
+						<div class="row">
+							<a href="#" onclick="myFunction()" class="btn btn-primary btn-block"><b style="color:orange;">'.$name.'</b> successfully edited.<br>Click here to reload.</a>
+						</div>
+					</div>
+					';
+				}
+			}
+				
+
+			
 			} else {
 				echo'<div class="col-xs-12">
 				<h2>Welcome back '.$_SESSION['pname'].'</h2>
@@ -148,7 +539,9 @@
 				<b>'.$siteversion.'</b> - Loading images local!<br>
 				<b>'.$siteversion.'</b> - Offers you Inventory searching with some basic character information.<br>
 				<b>'.$siteversion.'</b> - Search on character name<br>
-				<b>'.$siteversion.'</b> - Inventory organized by tabs<br>
+				<b>'.$siteversion.'</b> - Inventory organized by tabs<br><br>
+				<b>'.$siteversion.'</b> - New layout!<br>
+				<b>'.$siteversion.'</b> - Edit player infomation! (cannot update INT 0.o)<br>
 				</p>
 
 					<form action="?ma=main" method="post">
@@ -193,8 +586,16 @@
 				<b>'.$siteversion.'</b> - Loading images local!<br>
 				<b>'.$siteversion.'</b> - Offers you Inventory searching with some basic character information.<br>
 				<b>'.$siteversion.'</b> - Search on character name<br>
-				<b>'.$siteversion.'</b> - Inventory organized by tabs<br>
+				<b>'.$siteversion.'</b> - Inventory organized by tabs<br><br>
+				<b>'.$siteversion.'</b> - New layout!<br>
+				<b>'.$siteversion.'</b> - Edit player infomation! (cannot update INT 0.o)<br>
 				</p>
 			</div>';
 		}
 ?>
+
+<script>
+function myFunction() {
+    location.reload();
+}
+</script>

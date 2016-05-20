@@ -11,6 +11,11 @@ session_start();
 			include("src/index.php");
 			include("src/footer.php");
 			break;
+		case "mutate":
+			include("src/header.php");
+			include("src/mutate.php");
+			include("src/footer.php");
+			break;
 		default:
 			include("src/header.php");
 			include("src/index.php");

@@ -10,7 +10,7 @@ $host['database'] = ''; // Database Name
 
 $sitefolder = 'MapleBit-Master'; // default MapleBit-Master
 $sitename = 'MapleAdmin';
-$siteversion = 'v1.4';
+$siteversion = 'v1.5';
 
 /* Don`t touch. */
 $mysqli = new MySQLi($host['hostname'],$host['user'],$host['password'],$host['database']);

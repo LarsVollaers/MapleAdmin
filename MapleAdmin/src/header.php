@@ -18,4 +18,12 @@ if(basename($_SERVER["PHP_SELF"]) == "header.php"){
 	
 </head>
 	<body>
-		<div class="col-xs-12"><div class="logo_box"><div class="version_fix"><b><?php echo''.$siteversion.'';?></b></div></div> <hr/></div>
+		<div class="col-xs-12-fluid">
+			<div class="well well-sm">
+					<div class="logo_box">
+						<div class="version_fix">
+							<b><?php echo''.$siteversion.'';?></b>
+						</div>
+					</div> 
+			</div>
+		</div>

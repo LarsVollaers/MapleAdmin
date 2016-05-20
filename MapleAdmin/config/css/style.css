@@ -38,29 +38,30 @@ h1,h2,h3,h4 {
 .image_box {
 	float: left;
 	width: 40px;
-	height: 52px;
-	border: 1px solid black;
+	height: 42px;
 	margin: 2px;
+	padding: 2px;
+	background-size:42px 40px;
+	background-repeat: no-repeat;
+	background-image: url("/MapleAdmin/config/img/item_bg.png");
 }
 
 .image_box2 {
 	float: left;
 	width: 1px;
-	height: 52px;
-	margin-left: 1px;
+	height: 42px;
 	color: white;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .counter_fix {
 	position: relative;
-	top: 34px;
-	left: -42px;
+	top: 23px;
+	left: -5px;
 	padding-left: 1px;
 	font-size: 14px;
-	background-color: black;
-	width: 38px;
-	opacity: 0.5;
+	opacity: 1;
+	direction: rtl;
 }
 
 .version_fix {
@@ -83,4 +84,12 @@ h1,h2,h3,h4 {
 
 .color_red {
 	color: #BA0000;
+}
+
+.item_grid {
+	position: absolute;
+	top: 140px;
+	left: 55px;
+
+	width: 573px;
 }

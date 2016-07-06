@@ -10,7 +10,7 @@ $host['database'] = ''; // Database Name
 
 $sitefolder = 'MapleBit-Master'; // default MapleBit-Master
 $sitename = 'MapleAdmin';
-$siteversion = 'v1.5';
+$siteversion = 'v1.6';
 
 /* Don`t touch. */
 $mysqli = new MySQLi($host['hostname'],$host['user'],$host['password'],$host['database']);
@@ -209,6 +209,8 @@ This crappy site only supports the MapleBit-Master CMS.
 			  \_
 			  
 Made by Lars from BoomBoomMS
+
+HoltHelper for character images.
 */
 ?>
 

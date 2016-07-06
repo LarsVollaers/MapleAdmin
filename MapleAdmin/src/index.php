@@ -25,7 +25,7 @@
 			$kk = $mysqli->query("SELECT * from inventoryitems Where characterid = $id AND inventorytype = 5"); // cash
 			
 			echo'
-				<div class="row">
+				<div>
 				
 					<div class="col-xs-12 col-lg-2">
 						<div class="well well-sm">
@@ -161,7 +161,7 @@
 					<span class="label label-default">Character ID: <b>'.$c['id'].'</b></span> <span class="label label-default">Account ID: <b>'.$e['id'].'</b></span>
 					<button style="float:right;" type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Edit</button>
 					  <div class="panel-body">
-						<img src="/'.$sitefolder.'/assets/img/GD/Characters/'.$c['name'].'.png" name="Character_img" alt="#" />
+						<img src="config/img/GD/character.php?name='.$c['name'].'" name="Character_img" alt="#" />
 					  </div>
 					<div class="panel-footer"> 
 						<span class="label label-default">Name: <b>'.$c['name'].'</b></span> 
@@ -546,7 +546,7 @@
 
 					<form action="?ma=main" method="post">
 						<div class="form-group">
-							<input class="form-control" name="name" placeholder="Character Name" required>
+							<input class="form-control" id="search" name="name" placeholder="Character Name" required>
 						</div>
 								
 						<div class="form-group">

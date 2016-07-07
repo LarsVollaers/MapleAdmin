@@ -1,11 +1,11 @@
 @font-face {
     font-family: Sansation_Regular;
-    src: url(/MapleAdmin/config/fonts/Sansation_Regular.ttf);
+    src: url(../../config/fonts/Sansation_Regular.ttf);
 }
 
 body {
 	background-size:20px 20px;
-	background-image: url("/MapleAdmin/config/img/overlay.png");
+	background-image: url("../../config/img/overlay.png");
 	background-repeat: repeat;
 	font-family:Sansation_Regular;
 }
@@ -32,7 +32,7 @@ h1,h2,h3,h4 {
 	width: 300px;
 	background-size:300px 55px;
 	background-repeat: no-repeat;
-	background-image: url("/MapleAdmin/config/img/logo.png");
+	background-image: url("../../config/img/logo.png");
 }
 
 .image_box {
@@ -43,7 +43,7 @@ h1,h2,h3,h4 {
 	padding: 2px;
 	background-size:42px 40px;
 	background-repeat: no-repeat;
-	background-image: url("/MapleAdmin/config/img/item_bg.png");
+	background-image: url("../../config/img/item_bg.png");
 }
 
 .image_box2 {

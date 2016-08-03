@@ -105,7 +105,21 @@ if(isset($_SESSION['id']) && isset($_SESSION['gm']) || isset($_SESSION['admin'])
 										'; // Setup
 										while($i = $ii->fetch_assoc()) {
 										echo'<div class="image_box"> 
-												<img src="./config/img/items/'.$i['itemid'].'.png" alt="img" title="'.$i['itemid'].'" />
+										';
+										if($i['itemid'] > '3059999' && $i['itemid'] < '3060181'){
+											echo'<img src="./config/img/items/3060000.png" alt="img" title="'.$i['itemid'].'" />';
+										} else if($i['itemid'] > '3060999' && $i['itemid'] < '3061391'){ // 3061390 + 1
+											echo'<img src="./config/img/items/3060001.png" alt="img" title="'.$i['itemid'].'" />';
+										} else if($i['itemid'] > '3061999' && $i['itemid'] < '3062386'){ // 3062385 + 1
+											echo'<img src="./config/img/items/3060002.png" alt="img" title="'.$i['itemid'].'" />';
+										} else if($i['itemid'] > '3062999' && $i['itemid'] < '3063401'){ // 3063400 + 1
+											echo'<img src="./config/img/items/3060003.png" alt="img" title="'.$i['itemid'].'" />';
+										} else if($i['itemid'] > '3063999' && $i['itemid'] < '3064491'){ // 3064490 + 1
+											echo'<img src="./config/img/items/3060004.png" alt="img" title="'.$i['itemid'].'" />';
+										} else {
+											echo'<img src="./config/img/items/'.$i['itemid'].'.png" alt="img" title="'.$i['itemid'].'" />';
+										}
+										echo'
 											</div> 
 											<div class="image_box2"> 
 												<p class="counter_fix">'.$i['quantity'].'</p>

@@ -7,6 +7,7 @@ Database configurations:
 * Edit character stats.
 * auto correct character names.
 
+# Put the nebulites images into your items folder.
 
 Made by lars Vollaers
 

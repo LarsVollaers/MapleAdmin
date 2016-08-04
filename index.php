@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 require_once("config/database.php");
 $_base = isset($_GET['ma']) ? $_GET['ma'] : "";
 switch($_base){

@@ -1,12 +1,11 @@
 <?php
 if(isset($_SESSION['id']) && isset($_SESSION['gm']) || isset($_SESSION['admin'])) {
 	if(isset($_POST['name'])){
-		$name = $_POST['name'];
-		$aa = $mysqli->query("SELECT * from characters WHERE name='$name'");
-		$a = $aa->fetch_assoc();
-		if(strtolower($a['name']) != strtolower($name)){
-			echo'<div class="col-xs-12"><div class="alert alert-dismissible alert-danger">Oh boy! <b><i>"'.$_POST['name'].'"</i></b> does not exists!</div><a href="?ma=main" class="btn btn-warning">Back</a><hr/></div>';
-			error_reporting(0);
+		$name = $mysqli->real_escape_string($_POST['name']);
+		$a = $mysqli->query("SELECT * from characters WHERE name='$name'")->fetch_assoc();
+		if(!$a || strtolower($a['name']) != strtolower($name)){
+			echo'<div class="col-xs-12"><div class="alert alert-dismissible alert-danger">Oh boy! <b><i>"'.$_POST['name'].'"</i></b> does not exist!</div><a href="?ma=main" class="btn btn-warning">Back</a><hr/></div>';
+			return;
 		}
 		$id = $a['id'];
 		$bb = $mysqli->query("SELECT * from inventoryitems Where characterid = $id");

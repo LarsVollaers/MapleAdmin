@@ -2,9 +2,11 @@ Database configurations:
  - config/database.php
  - config/img/GD/character.php
 
-* Maplebit login support.
 * Edit character stats.
-* auto correct character names.
+* auto search character names.
+
+DOWNLOAD HERE: GD and Items folders
+url: https://www.mediafire.com/?8a7cjesobjeb8g2
 
 
 Made by lars Vollaers
